@@ -89,59 +89,6 @@ let users =  [
   }
 ]
 
-module.exports.getAllUsers = (req, res, next) => {
-  
-  const { limit, page } = req.query;
-  console.log(limit, page);
-  undefined.test();
-  res.json(users.slice(0, limit));
-};
-
-module.exports.saveAUser = (req, res) => {
-  console.log(req.query);
-  users.push(req.body);
-  res.send(users);
-};
-
-module.exports.getUserDetail = (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-  // const filter = {_id: id};
-  const foundTool = users.find(tool => tool.id === Number(id));
-  res.status(200).send({
-    success: true,
-    messages: "Success",
-    data: foundTool
-  });
-  // res.status(500).send({
-  //   success: false,
-  //   error: "Internal server error."
-  // });
-};
-
-module.exports.updateUser = (req, res) => {
-  // const newData = req.body;
-  const { id } = req.params;
-  const filter = { _id: id };
-
-  const newData = users.find(tool => tool._id === Number(id));
-
-  newData.id = id;
-  newData.name = req.body.name;
-
-  res.send(newData);
-
-};
-
-module.exports.deleteUser = (req, res) => {
-  const { id } = req.params;
-  const filter = { _id: id };
-
-  users = users.filter(user => user.id !== Number(id));
-
-  res.send(users);
-};
-
 ////////////////////////// random user 
 
 module.exports.getRandomUser =(req, res)=>{
@@ -163,18 +110,6 @@ module.exports.getAllUser = (req, res) => {
   console.log(limit,page)
 
   res.send(users.slice(0,limit))
-
-  /* 
-  fs.readFile('public/users.json',(err, data)=>{
-    if(err){
-      res.write('failed to read data')
-      res.end();
-    }else{
-      res.write(data)
-      res.end();
-    }
- })  */
-
 }
 
 // post user/save
@@ -185,9 +120,8 @@ module.exports.saveInfo = (req, res)=>{
   res.send(users)
 }
 /// patch user/update
-
 module.exports.updateById = (req, res)=>{
-  // const newData = req.body;
+
   const {id} = req.params;
   console.log(id)
   const filter = {_id:id};
@@ -204,7 +138,31 @@ res.send(users);
 }
 
 /// patch user/bulk-update
+module.exports.updateByMultipleId = (req, res) =>{
+  
+  const {id1,id2,id3,id4,id5} = req.params;
+  console.log(id1,id2,id3,id4,id5)
 
+   let newData;
+    newData = users.find(user =>user._id === Number(id1));
+    newData = users.find(user =>user._id === Number(id1));
+    newData = users.find(user =>user._id === Number(id1));
+    newData = users.find(user =>user._id === Number(id1));
+    newData = users.find(user =>user._id === Number(id1));
+    newData = users.find(user =>user._id === Number(id1));
+
+   newData._id = (req.body._id);
+   newData.gender = req.body.gender
+   newData.name = req.body.name
+   newData.contact = req.body.contact
+   newData.address = req.body.address
+   newData.photoUrl = req.body.photoUrl
+
+
+   console.log(newData)
+   res.send(users);
+   
+}
 /// delete user/delete
 module.exports.deleteById = (req, res)=>{
   const {id} = req.params;

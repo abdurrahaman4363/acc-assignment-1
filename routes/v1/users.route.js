@@ -5,18 +5,6 @@ const viewCount = require("../../middleware/veiwCount");
 
 const router = express.Router();
 
-/* 
-router
-  .route("/")
-  .get(usersControllers.getAllUsers)
-  .post(usersControllers.saveAUser);
-
-router
-  .route("/:id")
-  .get(viewCount, limiter, usersControllers.getUserDetail)
-  .patch(usersControllers.updateUser)
-  .delete(usersControllers.deleteUser);
- */
   router
   .route("/")
   .get(usersControllers.getAllUser)
@@ -32,6 +20,11 @@ router
   router
   .route("/:id")
   .patch(usersControllers.updateById)
+
+  router
+  .route("/:id1/:id2/:id3/:id4/:id5")
+  .patch(usersControllers.updateByMultipleId)
+
   router
   .route("/:id")
   .delete(usersControllers.deleteById)

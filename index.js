@@ -21,6 +21,7 @@ dbConnect();
  app.use("/user/save",usersRoutes)
  app.use("/user/update",usersRoutes)
  app.use("/user/delete",usersRoutes)
+ app.use("/user/bulk-update",usersRoutes)
 
 
 app.get("/", (req, res) => {
