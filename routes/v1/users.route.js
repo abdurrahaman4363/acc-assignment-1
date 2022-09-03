@@ -30,8 +30,11 @@ router
   .post(usersControllers.saveInfo)
 
   router
-  .route("/")
-  .patch(usersControllers.saveInfo)
+  .route("/:id")
+  .patch(usersControllers.updateById)
+  router
+  .route("/:id")
+  .delete(usersControllers.deleteById)
 
 
 module.exports = router;

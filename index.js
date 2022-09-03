@@ -16,10 +16,11 @@ app.set("view engine", "ejs");
 
 dbConnect();
 
-// app.use("/api/v1/users", usersRoutes);
-app.use("/user/all",usersRoutes)
-app.use("/user/save",usersRoutes)
-app.use("user/update",usersRoutes)
+ app.use("/api/v1/users", usersRoutes);
+ app.use("/user/all",usersRoutes)
+ app.use("/user/save",usersRoutes)
+ app.use("/user/update",usersRoutes)
+ app.use("/user/delete",usersRoutes)
 
 
 app.get("/", (req, res) => {

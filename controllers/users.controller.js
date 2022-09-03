@@ -187,8 +187,30 @@ module.exports.saveInfo = (req, res)=>{
 /// patch user/update
 
 module.exports.updateById = (req, res)=>{
-  
+  // const newData = req.body;
+  const {id} = req.params;
+  console.log(id)
+  const filter = {_id:id};
+  const newData = users.find(user =>user._id === Number(id));
+        newData._id = req.body._id
+        newData.gender = req.body.gender
+        newData.name = req.body.name
+        newData.contact = req.body.contact
+        newData.address = req.body.address
+        newData.photoUrl = req.body.photoUrl
+        console.log(newData)
+res.send(users);
+
 }
 
 /// patch user/bulk-update
+
 /// delete user/delete
+module.exports.deleteById = (req, res)=>{
+  const {id} = req.params;
+  const filter = {_id:id};
+
+  users = users.filter(user =>user._id !== Number(id));
+  res.send(`delete the info of this id ${id}`)
+  
+}
