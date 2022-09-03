@@ -89,7 +89,7 @@ let users =  [
   }
 ]
 
-////////////////////////// random user 
+// random user 
 
 module.exports.getRandomUser =(req, res)=>{
   const random =  Math.floor(Math.random() * 10);

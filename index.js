@@ -10,8 +10,8 @@ const errorHandler = require("./middleware/errorHandler");
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.static("public"));
-app.set("view engine", "ejs");
+app.use(express.static("public"));
+
 
 
 dbConnect();
@@ -24,17 +24,11 @@ dbConnect();
  app.use("/user/bulk-update",usersRoutes)
 
 
-app.get("/", (req, res) => {
-  res.render("home.ejs",{
-    id: 5,
-    user: {
-      name: "test"
-    }
-  });
-});
-
 app.get('/home', (req, res) =>{
   res.send(__dirname + "/public/users.json")
+})
+app.get('/', (req, res) =>{
+  res.send("Successfully start the server")
 })
 
 app.all("*", (req, res) => {

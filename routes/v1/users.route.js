@@ -1,7 +1,5 @@
 const express = require("express");
 const usersControllers = require("../../controllers/users.controller");
-const limiter = require("../../middleware/limiter");
-const viewCount = require("../../middleware/veiwCount");
 
 const router = express.Router();
 
