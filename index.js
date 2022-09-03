@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 
 dbConnect();
 
- app.use("/api/v1/users", usersRoutes);
+ app.use("/user/random", usersRoutes);
  app.use("/user/all",usersRoutes)
  app.use("/user/save",usersRoutes)
  app.use("/user/update",usersRoutes)
